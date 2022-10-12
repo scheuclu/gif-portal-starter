@@ -10,7 +10,7 @@ const App = () => {
     <div className="App">
       <div className="container">
         <div className="header-container">
-          <p className="header">🖼 GIF Portal</p>
+          <p className="header">🖼 Lukas GIF Portal</p>
           <p className="sub-text">
             View your GIF collection in the metaverse ✨
           </p>
