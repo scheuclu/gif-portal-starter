@@ -74,19 +74,22 @@
   width: 100%;
   bottom: 0;
   left: 0;
-  padding-bottom: 45px;
-  background: -webkit-linear-gradient(left, #211d56, #103647);
+  padding-bottom: 30px;
+  /* background: -webkit-linear-gradient(left, #211d56, #103647); */
+  background-color: rgba(0, 0, 0, 0.25);
 }
 
-.twitter-logo {
-  width: 35px;
-  height: 35px;
+.social-logo {
+  width: 50px;
+  height: 50px;
+  -webkit-filter: invert(1);
+   filter: invert(1);
 }
 
 .footer-text {
   color: white;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 24px;
+  /* font-weight: bold; */
 }
 
 .gif-grid {

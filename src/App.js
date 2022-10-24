@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import twitterLogo from './assets/twitter-logo.svg';
+import linkedinLogo from './assets/linkedin.svg';
+import githubLogo from './assets/github.svg';
+import instagramLogo from './assets/instagram.svg';
+import youtubeLogo from './assets/youtube.svg';
+
 import './App.css';
 
 import { Connection, PublicKey, clusterApiUrl } from '@solana/web3.js';
 import { Program, Provider, web3 } from '@project-serum/anchor';
 
 import kp from './keypair.json'
-import swal from 'sweetalert';
+import Swal from 'sweetalert2'
 
 
 // SystemProgram is a reference to the Solana runtime!
@@ -69,6 +73,14 @@ const App = () => {
       console.log('Connected with Public Key:', response.publicKey.toString());
       setWalletAddress(response.publicKey.toString());
     }
+    else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Solana wallet not found!',
+        text: 'This website needs a Solana wallet extension, so you can talk to the Solana blockchain. I recommend using Phantom wallet.',
+        footer: '<a href="https://phantom.app" target="_blank">Get Phantom now!</a>'
+      })
+    }
   };
 
   const onInputChange = (event) => {
@@ -121,21 +133,19 @@ const App = () => {
 
     if (inputValue.length === 0) {
       console.log("No gif link given!")
-      swal({
+      Swal.fire({
         title: "Link to GIF missing?",
         text: "Please enter a valid GIF link in the text-box above!",
-        icon: "warning",
-        dangerMode: false,
+        icon: "warning"
       })
       return
     }
     if (inputName.length === 0) {
       console.log("No submitter name given!")
-      swal({
+      Swal.fire({
         title: "Name field empty...",
         text: "Please enter your name or alibi in the box above!",
-        icon: "warning",
-        dangerMode: false,
+        icon: "warning"
       })
       return
     }
@@ -277,13 +287,29 @@ const App = () => {
           {walletAddress && renderConnectedContainer()}
         </div>
         <div className="footer-container">
-          <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
+
           <a
-            className="footer-text"
-            href="www.scheuclu.com"
-            target="_blank"
-            rel="noreferrer"
-          >built by scheuclu</a>
+              className="footer-text"
+              href="www.scheuclu.com"
+              target="_blank"
+              rel="noreferrer"
+            >built by scheuclu</a>
+          <p>&nbsp;&nbsp;</p>
+          <a href="https://www.linkedin.com/in/scheuclu">,
+            <img alt="Linkedin Logo" className="social-logo" src={linkedinLogo} />
+          </a>
+          <a href="https://github.com/scheuclu">,
+            <img alt="Github Logo" className="social-logo" src={githubLogo} />
+          </a>
+          <a href="https://www.instagram.com/scheuclu92">,
+            <img alt="Instagram Logo" className="social-logo" src={instagramLogo} />
+          </a>
+          <a href="https://www.youtube.com/channel/UC0So4gJ11qUZI_dzqVMOq8w">,
+            <img alt="Youtube Logo" className="social-logo" src={youtubeLogo} />
+          </a>
+
+
+
         </div>
       </div>
     </div>
