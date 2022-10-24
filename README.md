@@ -10,3 +10,8 @@ The [backend](https://github.com/scheuclu/gif-portal-contract) is implemented as
 
 ### Background
 This project is based on an exercise from [buildspace](https://app.buildspace.so/courses/CObd6d35ce-3394-4bd8-977e-cbee82ae07a3).
+
+
+![aaa](gif-portal.gif)
+
+![bbb](https://github.com/scheuclu/gif-portal-starter/raw/main/gif-portal.gif)
