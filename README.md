@@ -8,7 +8,7 @@ The [backend](https://github.com/scheuclu/gif-portal-contract) is implemented as
 2. Run `npm run start` to start the project
 
 ## Deployment
-The webpage is [deployed](https://ipfs.io/ipfs/QmWECyegiD66Ne9zbBobfjj4KNC8saVEJz5VCBQPYZtxTo/) to IPFS using [fleek](https://app.fleek.co), making the whoile app trule decentralized.🥳
+The webpage is [deployed](https://ipfs.io/ipfs/QmWECyegiD66Ne9zbBobfjj4KNC8saVEJz5VCBQPYZtxTo/) to IPFS using [fleek](https://app.fleek.co), making the whoile app trule decentralized.🥳 This is awesome. It means we have an application hosted completly anonymously and with no central authority.😎
 
 Alternatively, it is deployed to [Internet Computer](https://pv5wp-eyaaa-aaaad-qeena-cai.ic0.app) as well.
 
