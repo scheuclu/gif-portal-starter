@@ -10,6 +10,8 @@ The [backend](https://github.com/scheuclu/gif-portal-contract) is implemented as
 ## Deployment
 The webpage is [deployed](https://ipfs.io/ipfs/QmWECyegiD66Ne9zbBobfjj4KNC8saVEJz5VCBQPYZtxTo/) to IPFS using [fleek](https://app.fleek.co), making the whoile app trule decentralized.🥳
 
+Alternatively, it is deployed to [Internet Computer](https://pv5wp-eyaaa-aaaad-qeena-cai.ic0.app) as well.
+
 A classic version is also [deployed](https://jade-starlight-38bcd5.netlify.app) on netlify.
 
 
