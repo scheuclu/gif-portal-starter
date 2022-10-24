@@ -7,6 +7,8 @@ import { Program, Provider, web3 } from '@project-serum/anchor';
 
 import kp from './keypair.json'
 
+import swal from 'sweetalert';
+
 
 // SystemProgram is a reference to the Solana runtime!
 const { SystemProgram, Keypair } = web3;
@@ -44,6 +46,7 @@ const App = () => {
   // State
   const [walletAddress, setWalletAddress] = useState(null);
   const [inputValue, setInputValue] = useState('');
+  const [inputName, setInputName] = useState('');
   const [gifList, setGifList] = useState([]);
 
   // Actions
@@ -80,6 +83,11 @@ const App = () => {
     setInputValue(value);
   };
 
+  const onNameChange = (event) => {
+    const { value } = event.target;
+    setInputName(value);
+  };
+
   const getProvider = () => {
     const connection = new Connection(network, opts.preflightCommitment);
     const provider = new Provider(
@@ -111,17 +119,40 @@ const App = () => {
   }
 
   const sendGif = async () => {
+
+
+
     if (inputValue.length === 0) {
       console.log("No gif link given!")
+      swal({
+        title: "Link to GIF missing?",
+        text: "Please enter a valid GIF link in the text-box above!",
+        icon: "warning",
+        dangerMode: false,
+      })
+      return
+    }
+    if (inputName.length === 0) {
+      console.log("No submitter name given!")
+      swal({
+        title: "Name field empty...",
+        text: "Please enter your name or alibi in the box above!",
+        icon: "warning",
+        dangerMode: false,
+      })
       return
     }
     setInputValue('');
+    setInputName('');
     console.log('Gif link:', inputValue);
+    console.log('Submitter Name:', inputName);
     try {
       const provider = getProvider()
       const program = await getProgram(); 
   
-      await program.rpc.addGif(inputValue, {
+      await program.rpc.addGif(
+        inputValue,
+        inputName, {
         accounts: {
           baseAccount: baseAccount.publicKey,
           user: provider.wallet.publicKey,
@@ -172,6 +203,12 @@ const App = () => {
                 value={inputValue}
                 onChange={onInputChange}
               />
+              <input
+                type="text"
+                placeholder="Enter your name!"
+                value={inputName}
+                onChange={onNameChange}
+              />
               <button type="submit" className="cta-button submit-gif-button">
                 Submit
               </button>
@@ -181,6 +218,7 @@ const App = () => {
               {gifList.map((item, index) => (
                 <div className="gif-item" key={index}>
                   <img src={item.gifLink} />
+                  <p className="img-submitter">Submitted by Lukas</p>
                 </div>
               ))}
             </div>
@@ -245,10 +283,10 @@ const App = () => {
           <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
           <a
             className="footer-text"
-            href={TWITTER_LINK}
+            href="www.scheuclu.com"
             target="_blank"
             rel="noreferrer"
-          >{`built on @${TWITTER_HANDLE}`}</a>
+          >built by scheuclu</a>
         </div>
       </div>
     </div>

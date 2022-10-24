@@ -75,6 +75,7 @@
   bottom: 0;
   left: 0;
   padding-bottom: 45px;
+  background: -webkit-linear-gradient(left, #211d56, #103647);
 }
 
 .twitter-logo {
@@ -128,4 +129,8 @@
 
 .connected-container button {
   height: 50px;
+}
+
+.img-submitter {
+  color: #fff;
 }
