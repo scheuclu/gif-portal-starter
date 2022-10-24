@@ -6,7 +6,6 @@ import { Connection, PublicKey, clusterApiUrl } from '@solana/web3.js';
 import { Program, Provider, web3 } from '@project-serum/anchor';
 
 import kp from './keypair.json'
-
 import swal from 'sweetalert';
 
 
@@ -16,9 +15,10 @@ const { SystemProgram, Keypair } = web3;
 const arr = Object.values(kp._keypair.secretKey)
 const secret = new Uint8Array(arr)
 const baseAccount = web3.Keypair.fromSecretKey(secret)
+// let baseAccount = Keypair.generate(); //TODO
 
 // This is the address of your solana program, if you forgot, just run solana address -k target/deploy/myepicproject-keypair.json
-const programID = new PublicKey("61qV1VXxLZPDD8dsxvnRGg3bT2BZ8AvcQMRmzAVzVn6R");
+const programID = new PublicKey("GZnUtzwNfMrsK7U9NZT1PwrgnUnu6z9cGwc1v1Q7e5ta");
 
 // Set our network to devnet.
 const network = clusterApiUrl('devnet');
@@ -34,13 +34,6 @@ const opts = {
 const TWITTER_HANDLE = '_buildspace';
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
 
-
-const TEST_GIFS = [
-  "https://media3.giphy.com/media/Ie4CIIvQS0bk3zwZlM/giphy.gif?cid=ecf05e47uxzh47y0jmqqwewbjs7lt5cbxodu1pq09znzkktt&rid=giphy.gif&ct=g",
-  "https://media4.giphy.com/media/pynZagVcYxVUk/giphy.webp?cid=ecf05e47j5rcdtpycrdu1f6aiyaz1y8pouo4hvk8gisvwp8l&rid=giphy.webp&ct=g",
-	'https://media1.giphy.com/media/tXL4FHPSnVJ0A/200w.webp?cid=ecf05e47q2fxvokjf48bhibpc0vwkvccnvnvysz6yxo9gb97&rid=200w.webp&ct=g',
-	'https://media0.giphy.com/media/3ohs7HdhQA4ffttvrO/giphy.gif?cid=ecf05e4742p9w0tpkf32umqz90d3ajpr9evtlwvac3vhbq0k&rid=giphy.gif&ct=g'
-]
 
 const App = () => {
   // State
@@ -101,7 +94,11 @@ const App = () => {
       const provider = getProvider();
       const program = await getProgram();
       
-      console.log("ping")
+      console.log("ping");
+      console.log(baseAccount.publicKey.toString());
+      console.log(provider.wallet.publicKey.toString());
+      console.log(SystemProgram.programId.toString());
+
       await program.rpc.startStuffOff({
         accounts: {
           baseAccount: baseAccount.publicKey,
@@ -218,7 +215,7 @@ const App = () => {
               {gifList.map((item, index) => (
                 <div className="gif-item" key={index}>
                   <img src={item.gifLink} />
-                  <p className="img-submitter">Submitted by Lukas</p>
+                  <p className="img-submitter">Submitted by {item.userName}</p>
                 </div>
               ))}
             </div>
